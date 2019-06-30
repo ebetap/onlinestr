@@ -1,15 +1,17 @@
 <template>
-  <div id="header">
+  <div id="header" :class="{ fixed: navFixed }">
     <div class="navigation container">
       <div class="item menu-btn">
         <a-icon type="appstore" @click="menuOnClick()" />
       </div>
       <div class="item logo">
-        <img src="~~/assets/logo.svg" />
+        <nuxt-link to="/">
+          <img src="~~/assets/logo.svg" />
+        </nuxt-link>
       </div>
       <div class="item menu-right">
         <div class="item">
-          <a-icon type="search" />
+          <a-icon type="search" @click="searchOnClick()" />
         </div>
         <div class="item">
           <a-icon type="heart" />
@@ -27,13 +29,37 @@
 <script>
 export default {
   name: 'Navigation',
+  data() {
+    return {
+      navFixed: false
+    }
+  },
   props: {
-    menuOnClick: Function
+    menuOnClick: Function,
+    searchOnClick: Function
+  },
+  mounted() {
+    if (window) window.addEventListener('scroll', this.scrollHandler)
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.scrollHandler)
+  },
+  methods: {
+    scrollHandler(event) {
+      if (window.pageYOffset > 50) {
+        this.navFixed = true
+      } else {
+        this.navFixed = false
+      }
+    }
   }
 }
 </script>
 
 <style scoped>
+#header {
+  transition: all ease 0.4s;
+}
 .container {
   max-width: 80%;
   margin: auto;
@@ -68,5 +94,10 @@ export default {
 .navigation > .item {
   max-width: 33.33%;
   flex: 0 0 33.33%;
+}
+.fixed {
+  position: fixed;
+  width: 100%;
+  background: #fff;
 }
 </style>

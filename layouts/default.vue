@@ -1,7 +1,8 @@
 <template>
   <div>
-    <Navigation :menuOnClick="sideMenuHandler" />
+    <Navigation :menuOnClick="sideMenuHandler" :searchOnClick="searchHandler" />
     <Sidemenu :open="openSideMenu" :overlayOnClick="sideMenuHandler" />
+    <Search :open="openSearch" :overlayOnClick="searchHandler" />
     <nuxt />
     <Footer />
   </div>
@@ -9,21 +10,28 @@
 <script>
 import Navigation from '@@/components/Navigation'
 import Sidemenu from '@@/components/Sidemenu'
+import Search from '@@/components/Search'
 import Footer from '@@/components/Footer'
 export default {
   data() {
     return {
-      openSideMenu: false
+      openSideMenu: false,
+      openSearch: false
     }
   },
   methods: {
     sideMenuHandler() {
       this.openSideMenu = !this.openSideMenu
+    },
+    searchHandler() {
+      console.log('clicked')
+      this.openSearch = !this.openSearch
     }
   },
   components: {
     Navigation,
     Sidemenu,
+    Search,
     Footer
   }
 }

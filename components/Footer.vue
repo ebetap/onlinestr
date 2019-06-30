@@ -3,7 +3,7 @@
     <div class="subscribe-newsletter">
       <div class="container">
         <h2>Subscribe to the newsletter and receive a coupon for 10% off</h2>
-        <Button onClick="subscribeHandler" label="Subscribe" type="inverted" />
+        <Button :onClick="subscribeHandler" label="Subscribe" type="inverted" />
       </div>
     </div>
     <div class="footer-middle">
@@ -77,7 +77,7 @@ export default {
   },
   methods: {
     subscribeHandler() {
-      return true
+      console.log('Clicked')
     }
   }
 }

@@ -1,7 +1,5 @@
 <template>
-  <div class="hero-image" :style="{ background: imageUrl }">
-
-  </div>
+  <div class="hero-image" :style="{ background: `url(${imageUrl})` }"></div>
 </template>
 
 <script>
@@ -13,11 +11,14 @@ export default {
       required: true
     },
     title: String,
-    subTitle: String,
+    subTitle: String
   }
 }
 </script>
 
 <style>
-
+.hero-image {
+  height: 640px;
+  background-size: cover !important;
+}
 </style>
