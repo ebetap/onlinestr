@@ -1,8 +1,15 @@
 <template>
   <div>
-    <Navigation :menuOnClick="sideMenuHandler" :searchOnClick="searchHandler" />
+    <Navigation
+      :menuOnClick="sideMenuHandler"
+      :searchOnClick="searchHandler"
+      :wishlistOnClick="wishlistHandler"
+      :cartOnClick="cartHandler"
+    />
     <Sidemenu :open="openSideMenu" :overlayOnClick="sideMenuHandler" />
     <Search :open="openSearch" :overlayOnClick="searchHandler" />
+    <Wishlist :open="openWishlist" :overlayOnClick="wishlistHandler" />
+    <Cart :open="openCart" :overlayOnClick="cartHandler" />
     <nuxt />
     <Footer />
   </div>
@@ -11,12 +18,24 @@
 import Navigation from '@@/components/Navigation'
 import Sidemenu from '@@/components/Sidemenu'
 import Search from '@@/components/Search'
+import Wishlist from '@@/components/Wishlist'
+import Cart from '@@/components/Cart'
 import Footer from '@@/components/Footer'
 export default {
+  components: {
+    Navigation,
+    Sidemenu,
+    Search,
+    Wishlist,
+    Cart,
+    Footer
+  },
   data() {
     return {
       openSideMenu: false,
-      openSearch: false
+      openSearch: false,
+      openWishlist: false,
+      openCart: false
     }
   },
   methods: {
@@ -24,15 +43,14 @@ export default {
       this.openSideMenu = !this.openSideMenu
     },
     searchHandler() {
-      console.log('clicked')
       this.openSearch = !this.openSearch
+    },
+    wishlistHandler() {
+      this.openWishlist = !this.openWishlist
+    },
+    cartHandler() {
+      this.openCart = !this.openCart
     }
-  },
-  components: {
-    Navigation,
-    Sidemenu,
-    Search,
-    Footer
   }
 }
 </script>

@@ -14,10 +14,10 @@
           <a-icon type="search" @click="searchOnClick()" />
         </div>
         <div class="item">
-          <a-icon type="heart" />
+          <a-icon type="heart" @click="wishlistOnClick()" />
         </div>
         <div class="item">
-          <a-icon type="shopping-cart" />
+          <a-icon type="shopping-cart" @click="cartOnClick()" />
         </div>
         <div class="item">
           <a-icon type="user" />
@@ -36,7 +36,9 @@ export default {
   },
   props: {
     menuOnClick: Function,
-    searchOnClick: Function
+    searchOnClick: Function,
+    wishlistOnClick: Function,
+    cartOnClick: Function
   },
   mounted() {
     if (window) window.addEventListener('scroll', this.scrollHandler)
