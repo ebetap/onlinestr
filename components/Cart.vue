@@ -31,7 +31,7 @@ export default {
   right: 0;
   transition: width 0.2s;
   overflow: hidden;
-  z-index: 2;
+  z-index: 3;
 }
 .overlay-c {
   top: 0;
